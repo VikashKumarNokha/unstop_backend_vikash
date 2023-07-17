@@ -2,6 +2,7 @@
  const cors = require("cors");
 
  const app = express();
+ require('dotenv').config()
 
  app.use(express.json())
 
@@ -24,12 +25,12 @@
 
  app.use("/seats", Seatcontroller);
 
+ const port=process.env.PORT || 5000
 
-
- app.listen(5000, async ()=>{
+ app.listen(port, async ()=>{
       try{
          await connect();
-          console.log("listening server on port 5000")
+          console.log(`listening server on port ${port}`)
       }catch(err){
          console.log("server", err);
       }
